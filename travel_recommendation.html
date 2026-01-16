@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Travel Recommendation</title>
+        
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: Arial, sans-serif;
+            }
+    
+            /* Navbar styling */
+            nav {
+                background-color: #333;
+                padding: 15px 20px;
+            }
+    
+            .navbar-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+    
+            .navbar-logo h1 {
+                color: white;
+                font-size: 24px;
+            }
+    
+            .navbar-links a {
+                color: white;
+                text-decoration: none;
+                margin: 0 15px;
+                font-size: 16px;
+            }
+    
+            .navbar-links a:hover {
+                color: #4CAF50;
+            }
+    
+            .navbar-search input {
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                margin-right: 5px;
+            }
+    
+            .navbar-search button {
+                padding: 8px 16px;
+                border: none;
+                border-radius: 4px;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+                margin-right: 5px;
+            }
+    
+            .navbar-search button:hover {
+                background-color: #45a049;
+            }
+    
+            /* Home page styling */
+            .home-section {
+                background-image: url('travel-background.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                min-height: 600px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                position: relative;
+            }
+    
+            .home-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+    
+            .home-content {
+                position: relative;
+                z-index: 1;
+                max-width: 800px;
+                padding: 40px;
+            }
+    
+            .home-content h1 {
+                font-size: 48px;
+                margin-bottom: 20px;
+            }
+    
+            .home-content p {
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+    
+            .social-media {
+                margin-top: 30px;
+            }
+    
+            .social-icon {
+                color: white;
+                text-decoration: none;
+                margin: 0 10px;
+                font-size: 16px;
+                padding: 10px 20px;
+                border: 2px solid white;
+                border-radius: 4px;
+                display: inline-block;
+                transition: all 0.3s;
+            }
+    
+            .social-icon:hover {
+                background-color: white;
+                color: #333;
+            }
+            /* About Us Section */
+.about-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.about-container h3 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.team-member h4 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 16px;
+    color: #777;
+}
+    /* Contact Us Section */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-container h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-intro {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+        /* Search Results Section */
+.results-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    min-height: 200px;
+}
+
+.results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#results-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+#results-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.result-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+}
+
+.result-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.result-card-content {
+    padding: 20px;
+}
+
+.result-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.result-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.local-time {
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #2e7d32;
+}
+
+.result-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.result-card button:hover {
+    background-color: #45a049;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #777;
+}
+        </style>
+    </head>
+   
+<body>
+    <nav>
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>Travel Recommendation</h1>
+            </div>
+            
+            <div class="navbar-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            
+            <div class="navbar-search">
+                <input type="text" id="searchInput" placeholder="Search destinations...">
+                <button id="searchBtn">Search</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="home-section">
+        <div class="home-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Welcome to Travel Recommendation - your ultimate guide to finding the perfect destination for your next journey. Whether you're seeking beaches, temples, or vibrant cities, we'll help you discover amazing places around the world.</p>
+            <p>Start exploring today and let us inspire your next unforgettable travel experience!</p>
+            
+            <div class="social-media">
+                <a href="#" class="social-icon">📘 Facebook</a>
+                <a href="#" class="social-icon">📷 Instagram</a>
+                <a href="#" class="social-icon">🐦 Twitter</a>
+            </div>
+        </div>
+    </section>
+    <section id="results" class="results-section">
+        <div class="results-container">
+            <h2 id="results-title" style="display: none;">Search Results</h2>
+            <div id="results-content"></div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+    <!-- About Us Section -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>At Travel Recommendation, we are passionate about helping travelers discover their perfect destinations. With years of experience in the travel industry, our mission is to provide personalized recommendations that match your interests, budget, and travel style.</p>
+            <p>Whether you're looking for peaceful beaches, ancient temples, or bustling city adventures, our expert team is here to guide you every step of the way. We believe that travel enriches lives and creates unforgettable memories.</p>
+        </div>
+
+        <h3>Our Team</h3>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="team-member1.jpg" alt="Team Member 1">
+                <h4>Sarah Johnson</h4>
+                <p>CEO & Founder</p>
+            </div>
+
+            <div class="team-member">
+                <img src="team-member2.jpg" alt="Team Member 2">
+                <h4>Michael Chen</h4>
+                <p>Head of Travel Operations</p>
+            </div>
+
+            <div class="team-member">
+                <img src="team-member3.jpg" alt="Team Member 3">
+                <h4>Emily Rodriguez</h4>
+                <p>Customer Experience Manager</p>
+            </div>
+
+            <div class="team-member">
+                <img src="team-member4.jpg" alt="Team Member 4">
+                <h4>David Kim</h4>
+                <p>Travel Consultant</p>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- Contact Us Section -->
+ <section id="contact" class="contact-section">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p class="contact-intro">Have questions or need help planning your next adventure? We'd love to hear from you!</p>
+        
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</section>
+</section> <!-- konec contact section -->
+    
+<script src="travel_recommendation.js"></script>
+</body>
+</html>
+</body>
+</html>
